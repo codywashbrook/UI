@@ -6,19 +6,19 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    private Text score;
-    private int scoreAmount;
+    public TextMeshProUGUI scoreText;
+    public int scoreAmount;
     // Start is called before the first frame update
     void Start()
     {
         scoreAmount = 0;
-        score = GetComponent<Text>();
+        scoreText = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-        score.text = scoreAmount.ToString();
+        scoreText.text = scoreAmount.ToString();
     }
 
     public void AddScore()
@@ -29,5 +29,9 @@ public class Score : MonoBehaviour
     public void LessScore()
     {
         scoreAmount -= 5;
+        if (scoreAmount < 0)
+        {
+            scoreAmount = 0;
+        }
     }
 }
